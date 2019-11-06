@@ -1,0 +1,7 @@
+WITH data AS 
+( 
+       SELECT jslibs.quadkey.St_quadkey_polyfillfromgeog(tract_geom,20) AS geo 
+       FROM   `bigquery-PUBLIC-data.geo_census_tracts`.census_tracts_washington limit 1 ) 
+SELECT jslibs.quadkey.st_quadkey_boundary(h3) AS h3geo 
+FROM   data, 
+       unnest(geo) AS h3
