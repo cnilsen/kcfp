@@ -1,0 +1,13 @@
+name: king-co
+channels:
+  - conda-forge
+dependencies:
+  - numpy
+  - matplotlib
+  - pandas
+  - google-auth
+  - earthengine-api
+  - cachetools
+  - geopandas
+  - georaster
+  - ipyleaflet
