@@ -157,7 +157,7 @@ def process_HRUs(df):
 def downloadDEM(x,
                 y,
                 filename="users/stormwaterheatmap/public/hydrodem_wgs84",
-                scale=10,
+                scale=30,
                 outputdir=None,
                 ee=None):
     """
@@ -402,7 +402,7 @@ def remove_existing_layer(mapobj, layername):
         mapobj.remove_layer(mapobj.layers[all_names.index(layername)])
 
 
-def accept_button_click_handler(button, mapobj=None, watershed_dict=None, wbt=None,
+def accept_button_click_handler(button, scale = 30, mapobj=None, watershed_dict=None, wbt=None,
                                 ee=None, outputdir=None, info_panel=None):
     button.disabled = True
     center = (watershed_dict['pour_point'].loc[0, 'y'], watershed_dict['pour_point'].loc[0, 'x'])
@@ -415,7 +415,7 @@ def accept_button_click_handler(button, mapobj=None, watershed_dict=None, wbt=No
     info_panel.layout.visibility = 'visible'
     info_panel.value = '...fetching DEM'
 
-    dem_path = downloadDEM(x=center[1], y=center[0], outputdir=outputdir, ee=ee)
+    dem_path = downloadDEM(x=center[1], y=center[0], outputdir=outputdir, ee=ee, scale = scale)
     info_panel.value = '...delineating watershed'
 
     watershed_full_workflow(wbt, point=watershed_dict['pour_point'].loc[0, 'geometry'],
