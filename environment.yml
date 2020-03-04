@@ -11,3 +11,8 @@ dependencies:
   - geopandas
   - georaster
   - ipyleaflet
+  - pandas-gbq
+  - whitebox
+  - folium
+  - rasterio
+  - altair
